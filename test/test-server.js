@@ -234,8 +234,20 @@ describe('Recipes', function() {
       });
   });
 
+
+  it('should throw ERROR if args aren\'t properly filled', function(){
+    const {Recipes} = require('../models.js');
+    const badInputs = [
+      [1, {}],
+      [false, function(){}],
+      [function(){}, true]
+    ]
+
+    badInputs.forEach(function(input){
+      (function(){
+        Recipes(input[0], input[1]);
+      });
+    });
   });
 
-
-
-
+});
